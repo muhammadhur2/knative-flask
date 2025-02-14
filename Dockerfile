@@ -1,15 +1,16 @@
 FROM python:${NODE_VERSION}-alpine
-# Set the working directory inside the container
+
+# Set the working directory
 WORKDIR /app
 
 # Copy the application files into the container
 COPY . .
 
-# Install required dependencies
-RUN pip install --no-cache-dir flask
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose the Flask port
 EXPOSE 5000
 
-# Command to run the Flask app
+# Run the Flask app
 CMD ["python", "app.py"]
